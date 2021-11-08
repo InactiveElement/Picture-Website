@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  signup: boolean = true;
-  signin: boolean = true;
+  signup: boolean = false;
+  signin: boolean = false;
 
   constructor() { }
 

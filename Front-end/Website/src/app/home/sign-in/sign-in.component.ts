@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignInComponent implements OnInit {
 
+  loginForm: any;
+  error: string = "";
+  loading: boolean = true;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit() {
+    
   }
 
 }

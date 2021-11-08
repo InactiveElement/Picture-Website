@@ -1,3 +1,21 @@
-<p>home works!</p>
-<app-sign-up *ngIf="signup"></app-sign-up>
-<app-sign-in *ngIf="signin"></app-sign-in>
+
+
+<title>Home</title>
+<div class="header">
+    <h1>Photos with Friends</h1>
+</div>
+<img src="/assets/images/blue-mountain.png" style="z-index: -1; width: 100%; height: 100%; position: absolute; left: 0; right: 0;">
+<div class="col" style="padding-top: 20rem;">
+    <div *ngIf="!signin && !signup" class="row" style="justify-content: center; margin-bottom: 1rem;">
+        <button (click)="signin=true" class="home-btn">Sign In</button>
+    </div>
+    <div *ngIf="!signup && !signin" class="row" style="justify-content: center;">
+        <button (click)="signup=true" class="home-btn">Sign Up</button>
+    </div>
+    
+    <div *ngIf="signup || signin" class="row" style="justify-content: center;">
+        <app-sign-up *ngIf="signup"></app-sign-up>
+        <app-sign-in *ngIf="signin"></app-sign-in> 
+    </div>
+    
+</div>
