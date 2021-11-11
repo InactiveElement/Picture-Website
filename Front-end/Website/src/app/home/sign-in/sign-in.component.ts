@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-sign-in',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignInComponent implements OnInit {
 
+  @Output() _switchUp = new EventEmitter();
+  @Output() _goHome = new EventEmitter();
   loginForm: any;
   error: string = "";
   loading: boolean = true;
@@ -17,6 +19,14 @@ export class SignInComponent implements OnInit {
 
   onSubmit() {
     
+  }
+
+  switchUp() {
+    this._switchUp.emit();
+  }
+
+  goHome() {
+    this._goHome.emit();
   }
 
 }

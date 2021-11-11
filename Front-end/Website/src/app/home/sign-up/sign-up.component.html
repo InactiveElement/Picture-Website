@@ -1,1 +1,66 @@
-
+<div class="row" style="justify-content: center;">
+    <div class="card" style="border-color: #5b9be6; color: #5b9be6; background-color: #cbe7ff; max-width: 50rem; padding: 0">
+        <h4 class="card-header" style="background-color: #5b9be6; color: azure; text-align: center;">Sign up</h4>
+        <span class="material-icons-outlined" style="color: azure; position: absolute; right: 5px; top: 3px; cursor: pointer;" (click)="goHome()">
+            clear
+            </span>
+        <div class="card-body" style="text-align: center; padding-inline: 15%;">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group" style="padding-bottom: 0.3rem;">
+                    <input type="username" formControlName="username" class="form-control" 
+                    required
+                    [ngClass]="{'is-invalid': (loginForm.get('username').touched || loginForm.get('username').dirty) && !loginForm.get('username').valid }" 
+                    placeholder="Username"/>
+                    <span class='invalid-feedback'>
+                        <span *ngIf="loginForm.get('username').errors?.required">
+                            Please enter a username.
+                        </span>
+                    </span>
+                </div>
+                <div class="form-group" style="padding-bottom: 0.3rem;">
+                    <input type="text" formControlName="email" class="form-control" required 
+                    [ngClass]="{'is-invalid': (loginForm.get('email').touched || loginForm.get('email').dirty) && !loginForm.get('email').valid }"
+                    placeholder="Email"/>
+                    <span class='invalid-feedback'>
+                        <span *ngIf="loginForm.get('email').errors?.required">
+                            Please enter your email address.
+                        </span>
+                        <span *ngIf="loginForm.get('email').errors?.email">
+                            Please enter a valid email address.
+                        </span>
+                    </span>
+                </div>  
+                <div class="form-group" style="padding-bottom: 0.3rem;">
+                    <input type="password" formControlName="password" class="form-control" 
+                    required
+                    [ngClass]="{'is-invalid': (loginForm.get('password').touched || loginForm.get('password').dirty) && !loginForm.get('password').valid }" 
+                    placeholder="Password"/>
+                    <span class='invalid-feedback'>
+                        <span *ngIf="loginForm.get('password').errors?.required">
+                            Please enter a password.
+                        </span>
+                    </span>
+                </div>
+                <div class="form-group" style="padding-bottom: 0.3rem;"> 
+                    <input type="password-confirm" formControlName="password-confirm" class="form-control" 
+                    required
+                    [ngClass]="{'is-invalid': (loginForm.get('password-confirm').touched || loginForm.get('password-confirm').dirty) && !loginForm.get('password-confirm').valid }" 
+                    placeholder="Confirm Password"/>
+                    <span class='invalid-feedback'>
+                        <span *ngIf="loginForm.get('password-confirm').errors?.required">
+                            Please confirm your password.
+                        </span>
+                    </span>
+                </div>
+                
+                <button [disabled]="!loginForm.valid" class="btn btn-primary" style="background-color: #5b9be6; border-color: #5b9be6;">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Sign up
+                </button>
+                <div><button (click)="switchIn()" class = 'btn btn-link' id = 'login' style = 'height: 40px;  margin: 0 auto; color: #2b73c5;' value = 'Need to Login?'>
+                    Need to Login?</button></div>  
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+            </form>
+        </div>
+    </div>
+</div>

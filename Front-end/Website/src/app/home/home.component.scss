@@ -11,10 +11,24 @@
 
 .home-btn {
     font-size: 2rem;
+    color: rgb(202, 234, 255);
     padding: 1rem;
     width: 20rem;
     text-align: center;
-    border: 0.2rem solid #5bbdd6;
+    border: 0.2rem solid #cce5fa;
     text-decoration: none;
-    background-color: #57c6d4;
+    background-color: #5b9be6;
+}
+
+.home-btn:hover {
+    cursor: pointer;
+    box-shadow: 0 2px 4px 0 rgba(46, 132, 202, 1), 0 3px 10px 0 rgba(46, 132, 202, 1);
+    transform: translateY(-0.1rem);
+    transition: transform 150ms;
+}
+
+.home-btn[disabled]:hover {
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
 }

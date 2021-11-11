@@ -1,1 +1,46 @@
 <router-outlet ></router-outlet>
+
+<!-- nav -->
+<!-- <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+</nav> -->
+
+
+
+<nav class='navbar navbar-expand navbar-dark' style = 'background-color: #5b9be6; justify-content: right; height: 4.5rem;' >
+    <a class='navbar-brand' style="color: rgba(202, 234, 255); position: absolute; left: 10px; font-size: xx-large;" routerLinkActive='active' [routerLink]="['/']">Pictures with Friends</a>
+    <ul *ngIf="currentUser" class='navbar-nav ml-auto'>
+        <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
+            >Home</a>
+        </li>
+        <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
+            >Homes for Sale</a>
+        </li>
+        <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/adverts']" 
+            >Sell a House</a>
+        </li>
+        <li *ngIf='!currentUser' class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle" style = "color: azure;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Login
+            </a>
+            <div class="dropdown-menu bg-dark mr-auto" aria-labelledby="navbarDropdown">
+                <a class='dropdown-item bg-dark' style = "color: azure;" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/login']"
+                    >Login</a>
+                <a class='dropdown-item bg-dark' style = "color: azure;" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/register']"
+                    >Register</a>
+            </div>
+        </li>
+        
+        <li *ngIf='currentUser' class='nav-item'><a class='nav-link' style = "color: crimson;" routerLinkActive='active' [routerLink]="['/']"
+            >Sign Out</a>
+        </li>
+    </ul>
+</nav>
+
+<!-- main app container -->
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

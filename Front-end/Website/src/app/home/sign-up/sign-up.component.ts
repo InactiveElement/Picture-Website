@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-sign-up',
@@ -7,9 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpComponent implements OnInit {
 
+  @Output() _switchIn = new EventEmitter();
+  @Output() _goHome = new EventEmitter();
+  loginForm: any;
+  error: string = "";
+  loading: boolean = true;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onSubmit() {
+
+  }
+
+  switchIn() {
+    this._switchIn.emit();
+  }
+
+  goHome() {
+    this._goHome.emit();
+  }
 }

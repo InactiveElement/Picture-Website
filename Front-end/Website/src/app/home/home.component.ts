@@ -15,4 +15,18 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  setSignUp() {
+    this.signin = false;
+    this.signup = true;
+  }
+
+  setSignIn() {
+    this.signup = false;
+    this.signin = true;
+  }
+
+  setHome() {
+    this.signin = false;
+    this.signup = false;
+  }
 }
