@@ -8,11 +8,6 @@
     </div>
 </nav> -->
 
-<div *ngIf="signin" class="row">
-    <app-sign-in *ngIf="signin" (_updateUser)="setUser()">
-    </app-sign-in>
-</div>
-
 <nav class='navbar navbar-expand navbar-dark' style = 'background-color: #5b9be6; justify-content: right; height: 4.5rem;' >
     <p class='navbar-brand' style="color: rgb(242, 250, 255); position: absolute; left: 10px; font-size: xx-large; top: 5px;" routerLinkActive='active' [routerLink]="['/']">Pictures with Friends</p>
     <ul *ngIf="currentUser" class='navbar-nav ml-auto'>
@@ -37,7 +32,7 @@
             </div>
         </li>
         
-        <li *ngIf='currentUser' class='nav-item'><a class='nav-link' style = "color: crimson;" routerLinkActive='active' [routerLink]="['/']"
+        <li *ngIf='currentUser' class='nav-item'><a class='nav-link' (click)="signOut()" style = "color: crimson;" routerLinkActive='active' [routerLink]="['/']"
             >Sign Out</a>
         </li>
     </ul>

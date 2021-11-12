@@ -29,10 +29,8 @@
                         <span *ngIf="loginForm.get('password').errors?.required">
                             Please enter a password.
                         </span>
-                    </span>
-                </div>
-                <!-- routerLinkActive='active' [routerLink]="['/']" -->
-                <button (click)="updateUser()" routerLinkActive='active' [routerLink]="['/home']" [disabled]="!loginForm.valid" class="btn-primary" style="background-color: #5b9be6; border-color: #5b9be6;">
+                    </span>                </div>
+                <button (click)="onSubmit()" [disabled]="!loginForm.valid" class="btn btn-primary" style="background-color: #5b9be6; border: 0.1rem solid rgb(242, 250, 255);">
                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     Login
                 </button>

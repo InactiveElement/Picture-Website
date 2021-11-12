@@ -10,3 +10,16 @@
     box-shadow: none;
     transform: none;
 }
+
+.material-icons-outlined:hover {
+    cursor: pointer;
+    box-shadow: 0 1px 2px 0 rgba(46, 132, 202, 1), 0 1px 5px 0 rgba(46, 132, 202, 1);
+    transform: translateY(-0.1rem);
+    transition: transform 150ms;
+}
+
+.material-icons-outlined[disabled]:hover {
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}

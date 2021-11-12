@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -9,17 +10,18 @@ export class SignInComponent implements OnInit {
 
   @Output() _switchUp = new EventEmitter();
   @Output() _goHome = new EventEmitter();
-  @Output() _updateUser = new EventEmitter();
   loginForm: any;
   error: string = "";
   loading: boolean = true;
-  constructor() { }
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    
+    sessionStorage.setItem('user', 'true');
+    this.router.navigate(["/home"]);
   }
 
   switchUp() {
@@ -28,10 +30,6 @@ export class SignInComponent implements OnInit {
 
   goHome() {
     this._goHome.emit();
-  }
-
-  updateUser() {
-    this._updateUser.emit();
   }
 
 }

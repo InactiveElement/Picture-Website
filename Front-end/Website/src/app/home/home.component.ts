@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +11,16 @@ export class HomeComponent implements OnInit {
   signup: boolean = false;
   signin: boolean = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  get currentUser() {
+    return sessionStorage.getItem('user') ?? null;
+  }
 
   ngOnInit(): void {
+    if (this.currentUser) {
+      this.router.navigate(["/home"]);
+    }
   }
 
   setSignUp() {

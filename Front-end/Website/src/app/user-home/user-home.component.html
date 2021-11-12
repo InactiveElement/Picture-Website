@@ -6,19 +6,19 @@
                     <!-- <input class='form-control' type='text' [(ngModel)]='filterTerm' placeholder="Search">
             </li> -->
             <div>
-                <li id="sharedPictures" class='nav-item'><a (click)="sharedPics()" class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
+                <li id="sharedPictures" class='nav-item'><a (click)="sharedPics()" class='nav-link' 
                     >Shared Pictures</a>
                     <div *ngIf="sharedUnder"><li class="nav-item">yeah</li></div>
                 </li>
             </div>
             <div>
-                <li id="myPictures" class='nav-item'><a (click)="myPics()" class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
+                <li id="myPictures" class='nav-item'><a (click)="myPics()" class='nav-link'
                     >My Pictures</a>
                     <div *ngIf="myUnder"><li class="nav-item">yeah</li></div>
                 </li>
             </div>
-            <li class="nav-item dropdown ">
-                <a class="nav-link dropdown-toggle" style = "color: azure; padding-left: 49rem;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" style = "color: azure; padding-left: 49rem;" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Order By
                 </a>
                 <div class="dropdown-menu bg-dark mr-auto"  aria-labelledby="navbarDropdown">
