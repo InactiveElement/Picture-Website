@@ -9,6 +9,7 @@ export class SignInComponent implements OnInit {
 
   @Output() _switchUp = new EventEmitter();
   @Output() _goHome = new EventEmitter();
+  @Output() _updateUser = new EventEmitter();
   loginForm: any;
   error: string = "";
   loading: boolean = true;
@@ -27,6 +28,10 @@ export class SignInComponent implements OnInit {
 
   goHome() {
     this._goHome.emit();
+  }
+
+  updateUser() {
+    this._updateUser.emit();
   }
 
 }

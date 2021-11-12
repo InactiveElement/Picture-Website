@@ -1,3 +1,4 @@
+
 <div class="row" style="justify-content: center;">
     <div class="card" style="border-color: #5b9be6; color: #5b9be6; background-color: #cbe7ff; max-width: 50rem; padding: 0;">
         <h4 class="card-header" style="background-color: #5b9be6; color: azure; text-align: center;">Login</h4>
@@ -31,7 +32,7 @@
                     </span>
                 </div>
                 <!-- routerLinkActive='active' [routerLink]="['/']" -->
-                <button [disabled]="!loginForm.valid" class="btn btn-primary" style="background-color: #5b9be6; border-color: #5b9be6;">
+                <button (click)="updateUser()" routerLinkActive='active' [routerLink]="['/home']" [disabled]="!loginForm.valid" class="btn-primary" style="background-color: #5b9be6; border-color: #5b9be6;">
                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     Login
                 </button>

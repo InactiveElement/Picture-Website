@@ -6,6 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  signin: boolean = false;
   currentUser: any = false;
   title = 'Website';
+
+  setUser() {
+    this.currentUser = true;
+  }
 }

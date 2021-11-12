@@ -7,8 +7,7 @@
         <div class="card-body" style="text-align: center; padding-inline: 15%;">
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div class="form-group" style="padding-bottom: 0.3rem;">
-                    <input type="username" formControlName="username" class="form-control" 
-                    required
+                    <input type="text" formControlName="username" class="form-control" required
                     [ngClass]="{'is-invalid': (loginForm.get('username').touched || loginForm.get('username').dirty) && !loginForm.get('username').valid }" 
                     placeholder="Username"/>
                     <span class='invalid-feedback'>
@@ -42,7 +41,7 @@
                     </span>
                 </div>
                 <div class="form-group" style="padding-bottom: 0.3rem;"> 
-                    <input type="password-confirm" formControlName="password-confirm" class="form-control" 
+                    <input type="password" formControlName="password-confirm" class="form-control" 
                     required
                     [ngClass]="{'is-invalid': (loginForm.get('password-confirm').touched || loginForm.get('password-confirm').dirty) && !loginForm.get('password-confirm').valid }" 
                     placeholder="Confirm Password"/>
@@ -53,7 +52,7 @@
                     </span>
                 </div>
                 
-                <button [disabled]="!loginForm.valid" class="btn btn-primary" style="background-color: #5b9be6; border-color: #5b9be6;">
+                <button [disabled]="!loginForm.valid" class="btn-sign" style="background-color: #5b9be6; border-color: #5b9be6; color: azure;">
                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     Sign up
                 </button>

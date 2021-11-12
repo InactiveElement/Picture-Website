@@ -1,0 +1,33 @@
+<nav class='navbar navbar-expand navbar-dark' style = 'background-color: #4488c7; margin-left: 5rem; margin-right: 5rem;'>
+    <div class = "container">
+        <ul class='navbar-nav mr-auto ml-auto'>
+
+            <!-- <li class='nav-item'> -->
+                    <!-- <input class='form-control' type='text' [(ngModel)]='filterTerm' placeholder="Search">
+            </li> -->
+            <div>
+                <li id="sharedPictures" class='nav-item'><a (click)="sharedPics()" class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
+                    >Shared Pictures</a>
+                    <div *ngIf="sharedUnder"><li class="nav-item">yeah</li></div>
+                </li>
+            </div>
+            <div>
+                <li id="myPictures" class='nav-item'><a (click)="myPics()" class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
+                    >My Pictures</a>
+                    <div *ngIf="myUnder"><li class="nav-item">yeah</li></div>
+                </li>
+            </div>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle" style = "color: azure; padding-left: 49rem;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Order By
+                </a>
+                <div class="dropdown-menu bg-dark mr-auto"  aria-labelledby="navbarDropdown">
+                    <a class='dropdown-item bg-dark' style = "color: azure;"
+                        (click) = 'newOld()'>Newest to Oldest</a>
+                    <a class='dropdown-item bg-dark' style = "color: azure;" 
+                        (click) = 'oldNew()'>Oldest to Newest</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
