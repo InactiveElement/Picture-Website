@@ -9,12 +9,12 @@
 </nav> -->
 
 <nav class='navbar navbar-expand navbar-dark' style = 'background-color: #5b9be6; justify-content: right; height: 4.5rem;' >
-    <p class='navbar-brand' style="color: rgb(242, 250, 255); position: absolute; left: 10px; font-size: xx-large; top: 5px;" routerLinkActive='active' [routerLink]="['/']">Pictures with Friends</p>
+    <p class='navbar-brand' style="color: rgb(242, 250, 255); position: absolute; left: 10px; font-size: 2.9rem; top: -5px; text-shadow: 4px 4px 3px black;">Pictures with Friends</p>
     <ul *ngIf="currentUser" class='navbar-nav ml-auto'>
-        <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
-            >Home</a>
+        <li class='nav-item'><p class='navbar-brand' style="color: azure; margin-top: 15px; margin-right: 3rem;" 
+            >Signed in</p>
         </li>
-        <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
+        <!-- <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
             >Homes for Sale</a>
         </li>
         <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/adverts']" 
@@ -30,9 +30,9 @@
                 <a class='dropdown-item bg-dark' style = "color: azure;" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/register']"
                     >Register</a>
             </div>
-        </li>
+        </li> -->
         
-        <li *ngIf='currentUser' class='nav-item'><a class='nav-link' (click)="signOut()" style = "color: crimson;" routerLinkActive='active' [routerLink]="['/']"
+        <li *ngIf='currentUser' class='nav-item'><a routerLinkActive='active' [routerLink]="['/']" class='nav-link' (click)="signOut()" style = "color: azure; padding-right: 1rem; margin-top: 15px;" 
             >Sign Out</a>
         </li>
     </ul>

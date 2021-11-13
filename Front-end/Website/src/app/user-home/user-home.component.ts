@@ -1,3 +1,4 @@
+import { style } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,23 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserHomeComponent implements OnInit {
 
-  share: any = document.getElementById("sharedPictures");
-  sharedUnder: boolean = false;
-  myUnder: boolean = false;
-
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
   sharedPics() {
-    this.sharedUnder = true;
-    this.myUnder = false;
+    document.getElementById('sharedPictures')?.setAttribute("style", "color: azure; text-shadow: 0 1px 2px 0 rgba(198, 202, 206, 1), 0 1px 5px 0 rgba(198, 202, 206, 1); transform: translateY(-0.1rem); transition: transform 150ms;")
+    document.getElementById('myPictures')?.setAttribute("style", "color: #cdd3da; text-shadow: none; transform: none;")
+
   }
 
   myPics() {
-    this.sharedUnder = false;
-    this.myUnder = true;
+    document.getElementById('sharedPictures')?.setAttribute("style", "color: #cdd3da; text-shadow: none; transform: none;")
+    document.getElementById('myPictures')?.setAttribute("style", "color: azure; text-shadow: 0 1px 2px 0 rgba(198, 202, 206, 1), 0 1px 5px 0 rgba(198, 202, 206, 1); transform: translateY(-0.1rem); transition: transform 150ms;")
   }
 
   newOld() {
@@ -32,6 +31,10 @@ export class UserHomeComponent implements OnInit {
 
   oldNew() {
 
+  }
+
+  get currentUser() {
+    return sessionStorage.getItem('user') ?? null;
   }
 
 
