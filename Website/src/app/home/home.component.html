@@ -1,0 +1,18 @@
+<title>Home</title>
+<img src="/assets/images/blue-mountain1.jpg" style="z-index: -1; width: 100%; height: 100%; position: absolute; left: 0; right: 0;">
+<div class="col" style="padding-top: 15rem;">
+    <div *ngIf="!signin && !signup" class="row" style="justify-content: center; margin-bottom: 1rem;">
+        <button (click)="signin=true" class="home-btn">Login</button>
+    </div>
+    <div *ngIf="!signup && !signin" class="row" style="justify-content: center;">
+        <button (click)="signup=true" class="home-btn">Sign up</button>
+    </div>
+    
+    <div *ngIf="signup" class="row" style="justify-content: center;" >
+        <app-sign-up *ngIf="signup" (_switchIn)="setSignIn()" (_goHome)="setHome()"></app-sign-up>
+    </div>
+    <div *ngIf="signin" class="row" style="justify-content: center;">
+        <app-sign-in *ngIf="signin" (_switchUp)="setSignUp()" (_goHome)="setHome()"></app-sign-in> 
+    </div>
+    
+</div>
