@@ -1,0 +1,65 @@
+<div class="row" style="justify-content: center;">
+    <div class="card" style="border-color: #5b9be6; color: #5b9be6; background-color: #cbe7ff; max-width: 50rem; padding: 0">
+        <h4 class="card-header" style="background-color: #5b9be6; color: azure; text-align: center;">Sign up</h4>
+        <span class="material-icons-outlined" style="color: azure; position: absolute; right: 5px; top: 3px; cursor: pointer;" (click)="goHome()">
+            clear
+            </span>
+        <div class="card-body" style="text-align: center; padding-inline: 15%;">
+            <form [formGroup]="signUp" (ngSubmit)="onSubmit()">
+                <div class="form-group" style="padding-bottom: 0.3rem;">
+                    <input type="text" formControlName="username" class="form-control" required
+                    [ngClass]="{'is-invalid': (signUp.get('username').touched || signUp.get('username').dirty) && !signUp.get('username').valid }" 
+                    placeholder="Username"/>
+                    <span class='invalid-feedback'>
+                        <span *ngIf="signUp.get('username').errors?.required">
+                            Please enter a username.
+                        </span>
+                    </span>
+                </div>
+                <div class="form-group" style="padding-bottom: 0.3rem;">
+                    <input type="text" formControlName="email" class="form-control" required 
+                    [ngClass]="{'is-invalid': (signUp.get('email').touched || signUp.get('email').dirty) && !signUp.get('email').valid }"
+                    placeholder="Email"/>
+                    <span class='invalid-feedback'>
+                        <span *ngIf="signUp.get('email').errors?.required">
+                            Please enter your email address.
+                        </span>
+                        <span *ngIf="signUp.get('email').errors?.email">
+                            Please enter a valid email address.
+                        </span>
+                    </span>
+                </div>  
+                <div class="form-group" style="padding-bottom: 0.3rem;">
+                    <input type="password" formControlName="password" class="form-control" 
+                    required
+                    [ngClass]="{'is-invalid': (signUp.get('password').touched || signUp.get('password').dirty) && !signUp.get('password').valid }" 
+                    placeholder="Password"/>
+                    <span class='invalid-feedback'>
+                        <span *ngIf="signUp.get('password').errors?.required">
+                            Please enter a password.
+                        </span>
+                    </span>
+                </div>
+                <div class="form-group" style="padding-bottom: 0.3rem;"> 
+                    <input type="password" formControlName="password-confirm" class="form-control" 
+                    required
+                    [ngClass]="{'is-invalid': (signUp.get('password-confirm').touched || signUp.get('password-confirm').dirty) && !signUp.get('password-confirm').valid }" 
+                    placeholder="Confirm Password"/>
+                    <span class='invalid-feedback'>
+                        <span *ngIf="signUp.get('password-confirm').errors?.required">
+                            Please confirm your password.
+                        </span>
+                    </span>
+                </div>
+                
+                <button [disabled]="!signUp.valid" class="btn btn-primary" style="background-color: #5b9be6; border: 0.1rem solid rgb(242, 250, 255);">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Sign up
+                </button>
+                <div><button (click)="switchIn()" class = 'btn btn-link' id = 'login' style = 'height: 40px;  margin: 0 auto; color: #2b73c5;' value = 'Need to Login?'>
+                    Need to Login?</button></div>  
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+            </form>
+        </div>
+    </div>
+</div>
