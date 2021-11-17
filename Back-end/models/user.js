@@ -1,27 +1,33 @@
 const db = require('../util/database');
 
-module.exports = class User {
-    constructor(email, username, password) {
-        this.email = email;
-        this.username = username;
+// const wrappingFunction = async () => {
+//     const connection = await db.getConnection();
+//     console.log(connection);
+// };
+// wrappingFunction();
 
+module.exports = class User {
+    constructor(username, email, password) {
+        
+        this.username = username;
+        this.email = email;
         this.password = password;
     }
 
-    static find(email) {
+    static findU(username) {
         return db.execute(
-            'SELECT * FROM user WHERE user_email = ?', [email]);
+            'SELECT * FROM users WHERE username = ?', [username]);
     }
 
-    static find(username) {
+    static findE(email) {
         return db.execute(
-            'SELECT * FROM user WHERE user_username = ?', [username]);
+            'SELECT * FROM users WHERE email = ?', [email]);
     }
 
     static save(user) {
         return db.execute(
-            'INSERT INTO user (user_email, user_username, user_password) VALUES (?, ?, ?)',
-            [user.email, user.username, user.password]
-        )
+            'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
+         [user.username, user.email, user.password]
+        );
     }
 };

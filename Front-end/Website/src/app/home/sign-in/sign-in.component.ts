@@ -1,4 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,19 +13,30 @@ export class SignInComponent implements OnInit {
 
   @Output() _switchUp = new EventEmitter();
   @Output() _goHome = new EventEmitter();
-  loginForm: any;
-  error: string = "";
-  loading: boolean = true;
+  loginForm: FormGroup;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.loginForm = this.createFormGroup();
   }
 
-  onSubmit() {
-    sessionStorage.setItem('user', 'true');
-    this.router.navigate(["/home"]);
+  createFormGroup(): FormGroup {
+    return new FormGroup({
+      email: new FormControl("", [Validators.required, Validators.email]),
+      password: new FormControl("", [Validators.required, Validators.minLength(5)])
+    })
   }
+
+  login(): void {
+    this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe();
+  }
+  
+
+  // onSubmit() {
+  //   sessionStorage.setItem('user', 'true');
+  //   this.router.navigate(["/home"]);
+  // }
 
   switchUp() {
     this._switchUp.emit();

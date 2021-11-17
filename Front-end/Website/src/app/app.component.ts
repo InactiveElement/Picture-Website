@@ -6,8 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  signin: boolean = false;
-  // currentUser: any = false;
   title = 'Website';
 
   constructor() { }
@@ -17,10 +15,10 @@ export class AppComponent implements OnInit {
   }
 
   get currentUser() {
-    return sessionStorage.getItem('user') ?? null;
+    return sessionStorage.getItem('token') ?? null;
   }
 
   signOut() {
-    sessionStorage.removeItem('user');
+    sessionStorage.removeItem('token');
   }
 }

@@ -6,40 +6,25 @@
             clear
             </span>
         <div class="card-body" style="text-align: center; padding-inline: 15%;">
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
                 <div class="form-group" style="padding-bottom: 0.3rem;">
                     <input type="text" formControlName="email" class="form-control" required 
-                    [ngClass]="{'is-invalid': (loginForm.get('email').touched || loginForm.get('email').dirty) && !loginForm.get('email').valid }"
                     placeholder="Email"/>
-                    <span class='invalid-feedback'>
-                        <span *ngIf="loginForm.get('email').errors?.required">
-                            Please enter your email address.
-                        </span>
-                        <span *ngIf="loginForm.get('email').errors?.email">
-                            Please enter a valid email address.
-                        </span>
-                    </span>
                 </div>
                 <div class="form-group" style="padding-bottom: 0.3rem;">
                     <input type="password" formControlName="password" class="form-control" 
                     required
-                    [ngClass]="{'is-invalid': (loginForm.get('password').touched || loginForm.get('password').dirty) && !loginForm.get('password').valid }" 
-                    placeholder="Password"/>
-                    <span class='invalid-feedback'>
-                        <span *ngIf="loginForm.get('password').errors?.required">
-                            Please enter a password.
-                        </span>
-                    </span>                </div>
-                <button (click)="onSubmit()" [disabled]="!loginForm.valid" class="btn btn-primary" style="background-color: #5b9be6; border: 0.1rem solid rgb(242, 250, 255);">
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    placeholder="Password (at least 5 characters)"/>
+               </div>
+                <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary" style="background-color: #5b9be6; border: 0.1rem solid rgb(242, 250, 255);">
+                    <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
                     Login
                 </button>
                 <div>
                 <button (click)="switchUp()" class = 'btn btn-link' id = 'register' style = 'height: 40px;  margin: 0 auto; color: #2b73c5;' value = 'Need to Register?'
-                >Need to Register?
+                >Need to Sign up?
                 </button>
                 </div>  
-                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
             </form>
         </div>
     </div>
