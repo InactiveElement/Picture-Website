@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Router } from "@angular/router";
 
 import { Observable, BehaviorSubject } from "rxjs";
@@ -27,7 +27,7 @@ export class AuthService {
     private router: Router
   ) {}
 
-  signup(user: Omit<User, "id">): Observable<User> {
+  signup(user: Omit<User, "id">): Observable<User | any> {
     return this.http
       .post<User>(`${this.url}/signup`, user, this.httpOptions)
       .pipe(
@@ -35,10 +35,14 @@ export class AuthService {
         tap((tokenObject: any) => {
           this.userId = tokenObject.userId;
           localStorage.setItem("token", tokenObject.token);
+          localStorage.setItem("userId", tokenObject.userId);
+          localStorage.setItem("username", tokenObject.username);
           this.isUserLoggedIn$.next(true);
           this.router.navigate(["home"]);
         }),
-        catchError(this.errorHandlerService.handleError<User>("signup"))
+        catchError(
+          this.errorHandlerService.handleError<any>("signup")
+        )
       );
   }
 
@@ -48,7 +52,7 @@ export class AuthService {
   ): Observable<{
     token: string;
     userId: Pick<User, "id">;
-  }> {
+  } | any> {
     return this.http
       .post(`${this.url}/login`, { email, password }, this.httpOptions)
       .pipe(
@@ -57,14 +61,13 @@ export class AuthService {
         tap((tokenObject: any) => {
           this.userId = tokenObject.userId;
           localStorage.setItem("token", tokenObject.token);
+          localStorage.setItem("userId", tokenObject.userId);
+          localStorage.setItem("username", tokenObject.username);
           this.isUserLoggedIn$.next(true);
           this.router.navigate(["home"]);
         }),
         catchError(
-          this.errorHandlerService.handleError<{
-            token: string;
-            userId: Pick<User, "id">;
-          }>("login")
+          this.errorHandlerService.handleError<any>("login")
         )
       );
   }

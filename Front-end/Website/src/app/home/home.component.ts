@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router) { }
 
   get currentUser() {
-    return sessionStorage.getItem('user') ?? null;
+    return localStorage.getItem('token') ?? null;
   }
 
   ngOnInit(): void {

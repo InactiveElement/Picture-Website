@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs';
 
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -13,6 +14,7 @@ export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
   @Output() _switchIn = new EventEmitter();
   @Output() _goHome = new EventEmitter();
+  message: any;
   
   constructor(private authService: AuthService) { }
 
@@ -28,9 +30,16 @@ export class SignUpComponent implements OnInit {
     })
   }
 
+  valueChange() {
+    this.message = null;
+  }
+
   signup(): void {
-    this.authService.signup(this.signUpForm.value)
-    .subscribe((msg) => console.log(msg));
+    this.authService.signup(this.signUpForm.value).pipe(first()).subscribe(
+      message => {
+        this.message = message.message;
+      }
+    )
   }
 
   switchIn() { 

@@ -1,10 +1,6 @@
+<div class = "container">
 <nav *ngIf="isAuthenticated" class='navbar navbar-expand navbar-dark' style = 'background-color: #4488c7; margin-left: 5rem; margin-right: 5rem;'> 
-    <div class = "container">
         <ul class='navbar-nav mr-auto ml-auto'>
-
-            <!-- <li class='nav-item'> -->
-                    <!-- <input class='form-control' type='text' [(ngModel)]='filterTerm' placeholder="Search">
-            </li> -->
             <div>
                 <li class='nav-item'><a id="sharedPictures" (click)="sharedPics()" class='nav-link' style="color: azure; text-shadow: 0 1px 2px 0 rgba(198, 202, 206, 1), 0 1px 5px 0 rgba(198, 202, 206, 1); transform: translateY(-0.1rem); transition: transform 150ms;"
                     >Shared Pictures</a>
@@ -15,18 +11,12 @@
                     >My Pictures</a>
                 </li>
             </div>
-            <!-- <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" style = "color: azure; padding-left: 49rem;" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Order By
-                </a>
-                <div class="dropdown-menu bg-dark mr-auto"  aria-labelledby="navbarDropdown">
-                    <a class='dropdown-item bg-dark' style = "color: azure;"
-                        (click) = 'newOld()'>Newest to Oldest</a>
-                    <a class='dropdown-item bg-dark' style = "color: azure;" 
-                        (click) = 'oldNew()'>Oldest to Newest</a>
-                </div>
-            </li> -->
         </ul>
-    </div>
-</nav>
+    </nav>
+    <div style="height:50rem;border:0.3rem solid #000; margin-right: 5rem; margin-left: 5rem; background-color: #c7def5;"></div>
+</div>
+
+
+
+
 

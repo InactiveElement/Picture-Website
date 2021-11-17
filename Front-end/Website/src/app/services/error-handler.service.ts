@@ -9,8 +9,10 @@ export class ErrorHandlerService {
 
   handleError<T>(operation = "operation", result?: T) {
     return (error: any): Observable<T> => {
+      
+      console.log(error)
       console.log(`${operation} failed: ${error.message}`);
-      return of(result as T);
+      return of(error.error);
     };
   }
 }

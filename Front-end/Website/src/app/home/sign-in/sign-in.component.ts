@@ -3,6 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { first } from 'rxjs';
+
+
 
 @Component({
   selector: 'app-sign-in',
@@ -14,6 +17,7 @@ export class SignInComponent implements OnInit {
   @Output() _switchUp = new EventEmitter();
   @Output() _goHome = new EventEmitter();
   loginForm: FormGroup;
+  message: any;
 
   constructor(private router: Router, private authService: AuthService) { }
 
@@ -29,14 +33,16 @@ export class SignInComponent implements OnInit {
   }
 
   login(): void {
-    this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe();
+    this.authService.login(this.loginForm.value.email, this.loginForm.value.password).pipe(first()).subscribe(
+      message => {
+        this.message = message.message;
+      }
+    )
   }
   
-
-  // onSubmit() {
-  //   sessionStorage.setItem('user', 'true');
-  //   this.router.navigate(["/home"]);
-  // }
+  valueChange() {
+    this.message = null;
+  }
 
   switchUp() {
     this._switchUp.emit();
@@ -44,6 +50,6 @@ export class SignInComponent implements OnInit {
 
   goHome() {
     this._goHome.emit();
-  }
+  } 
 
 }

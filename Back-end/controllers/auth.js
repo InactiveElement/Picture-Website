@@ -24,6 +24,20 @@ exports.signup = async (req, res, next) => {
       password: hashedPassword,
     };
 
+    const userU = await User.findU(username)
+    if(userU[0].length > 0) {
+      const error = new Error("Username already in use.")
+      error.statusCode = 403;
+      res.status(409).json({ message: error.message });
+      throw error;
+    }
+    const userE = await User.findE(email)
+    if(userE[0].length > 0) {
+      const error = new Error("Email address already in use.")
+      error.statusCode = 403;
+      res.status(409).json({ message: error.message });
+      throw error;
+    }
     const result = await User.save(userDetails);
 
     res.status(201).json({ message: 'User registered!' });
@@ -43,8 +57,9 @@ exports.login = async (req, res, next) => {
     const user = await User.findE(email)
 
     if(user[0].length !== 1) {
-      const error = new Error('A user with this email address could not be found.')
+      const error = new Error('Invalid login details.')
       error.statusCode = 401;
+      res.status(401).json({ message: error.message });
       throw error;
     }
 
@@ -53,8 +68,9 @@ exports.login = async (req, res, next) => {
     const isEqual = await bcrypt.compare(password, storedUser.password);
 
     if (!isEqual) {
-      const error = new Error('Incorrect password entered.')
+      const error = new Error('Invalid login details.')
       error.statusCode = 401;
+      res.status(401).json({ message: error.message });
       throw error;
     }
 
@@ -66,7 +82,7 @@ exports.login = async (req, res, next) => {
       'secretfortoken',
       { expiresIn: '1h' }
     );
-    res.status(200).json({ token: token, userId: storedUser.id });
+    res.status(200).json({ token: token, userId: storedUser.id, username: storedUser.username });
 
   } catch (err) {
     if (!err.statusCode) {

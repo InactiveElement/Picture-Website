@@ -9,7 +9,11 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent implements OnInit {
   title = 'Website';
-  isAuthenticated = false;
+  isAuthenticated = false;  
+  
+  get username() {
+    return localStorage.getItem("username") ?? "(missing)";
+  }
 
   constructor(private authService: AuthService, private router: Router) { }
   
@@ -17,11 +21,9 @@ export class AppComponent implements OnInit {
     this.authService.isUserLoggedIn$.subscribe((isLoggedin) => {
       this.isAuthenticated = isLoggedin;
     })
+    const userToken = localStorage.getItem("token");
+    const userId = localStorage.getItem("userId");
   }
-
-  // get currentUser() {
-  //   return sessionStorage.getItem('token') ?? null;
-  // }
 
   signOut() {
     localStorage.removeItem("token");
