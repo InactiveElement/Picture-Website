@@ -1,4 +1,4 @@
-<nav *ngIf="currentUser" class='navbar navbar-expand navbar-dark' style = 'background-color: #4488c7; margin-left: 5rem; margin-right: 5rem;'> 
+<nav *ngIf="isAuthenticated" class='navbar navbar-expand navbar-dark' style = 'background-color: #4488c7; margin-left: 5rem; margin-right: 5rem;'> 
     <div class = "container">
         <ul class='navbar-nav mr-auto ml-auto'>
 
@@ -29,14 +29,4 @@
         </ul>
     </div>
 </nav>
-
-<div *ngIf="!currentUser">
-    <div>
-        <p style="color: #4488c7; padding-top: 1rem; font-size: larger; left: 1rem; position: absolute;">No user logged in.</p>
-    </div>
-    <div>
-        <button routerLinkActive='active' [routerLink]="['/']" class = 'btn btn-link' style = 'height: 40px;  margin: 0 auto; color: #2b73c5; position: absolute; left: 0.25rem; top: 7.2rem;' value = 'Back to home'
-                >Back to home</button>
-    </div>
-</div>
 
