@@ -11,6 +11,9 @@ import { SignInComponent } from './home/sign-in/sign-in.component';
 import { UserHomeComponent } from './user-home/user-home.component';
 
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { UploadComponent } from './user-home/upload/upload.component';
+import { SharedPicsComponent } from './user-home/shared-pics/shared-pics.component';
+import { MyPicsComponent } from './user-home/my-pics/my-pics.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     HomeComponent,
     SignUpComponent,
     SignInComponent,
-    UserHomeComponent
+    UserHomeComponent,
+    UploadComponent,
+    SharedPicsComponent,
+    MyPicsComponent
     
   ],
   imports: [

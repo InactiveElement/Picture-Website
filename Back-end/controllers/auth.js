@@ -57,7 +57,7 @@ exports.login = async (req, res, next) => {
     const user = await User.findE(email)
 
     if(user[0].length !== 1) {
-      const error = new Error('Invalid login details.')
+      const error = new Error('Email address not found.')
       error.statusCode = 401;
       res.status(401).json({ message: error.message });
       throw error;
@@ -68,7 +68,7 @@ exports.login = async (req, res, next) => {
     const isEqual = await bcrypt.compare(password, storedUser.password);
 
     if (!isEqual) {
-      const error = new Error('Invalid login details.')
+      const error = new Error('Password incorrect.')
       error.statusCode = 401;
       res.status(401).json({ message: error.message });
       throw error;

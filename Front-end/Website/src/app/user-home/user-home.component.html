@@ -1,3 +1,4 @@
+<img src="/assets/images/blue-mountain1.jpg" style="z-index: -1; width: 100%; height: 100%; position: absolute; left: 0; right: 0;">
 <div class = "container">
 <nav *ngIf="isAuthenticated" class='navbar navbar-expand navbar-dark' style = 'background-color: #4488c7; margin-left: 5rem; margin-right: 5rem;'> 
         <ul class='navbar-nav mr-auto ml-auto'>
@@ -11,10 +12,30 @@
                     >My Pictures</a>
                 </li>
             </div>
+            <div>
+                <li class='nav-item'><a id="uploadPicture" (click)="uploadPic()" class='nav-link'
+                    >Upload a picture</a>
+                </li>
+            </div>
         </ul>
     </nav>
-    <div style="height:50rem;border:0.3rem solid #000; margin-right: 5rem; margin-left: 5rem; background-color: #c7def5;"></div>
+    <!-- <div style="height:50rem;border:0.3rem solid rgb(107, 107, 107); margin-right: 5rem; margin-left: 5rem; background-color: #c7def5;">
+    
+    </div> -->
 </div>
+
+<div *ngIf="upload" class="row" style="justify-content: center;" >
+    <app-upload></app-upload>
+</div>
+<div *ngIf="myPicsForm" class="row" style="justify-content: center;" >
+    <app-my-pics></app-my-pics>
+</div>
+<div *ngIf="sharedPicsForm" class="row" style="justify-content: center;" >
+    <app-shared-pics></app-shared-pics>
+</div>
+
+
+
 
 
 

@@ -57,7 +57,6 @@ export class AuthService {
       .post(`${this.url}/login`, { email, password }, this.httpOptions)
       .pipe(
         first(),
-        // { token: string; userId: Pick<User, "id"> } -- in place of any
         tap((tokenObject: any) => {
           this.userId = tokenObject.userId;
           localStorage.setItem("token", tokenObject.token);
