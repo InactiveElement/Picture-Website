@@ -31,7 +31,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "./node_modules/filepond/dist/filepond.min.css",
+              "./node_modules/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
             ],
             "scripts": []
           },
@@ -99,7 +101,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "./node_modules/filepond/dist/filepond.min.css",
+              "./node_modules/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
             ],
             "scripts": []
           }
