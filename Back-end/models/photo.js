@@ -3,6 +3,7 @@ var cors = require('cors')
 var app = express();
 var multer  = require('multer');
 const e = require('cors');
+const db = require('../util/database');
 // var upload = multer({ dest: 'uploads/' })
 
 
@@ -41,46 +42,63 @@ var server = app.listen(3000, function () {
   console.log("File upload app listening at http://%s:%s", host, port)
 });
 
-
-app.post('/upload', upload.single('photo'), (req, res) => {
-  if(req.fileTypeValidationError) {
-    let resp = {
-      status: "fail",
-      statusMessage: req.fileTypeValidationError,
-      data: []
-    }
-  res.send({resp});
-  return false;
-}
-
-const payload = req.body;
-const filename = req.file.filename;
-
-const sql = `
-INSERT INTO pictures (
-  picture_data,
-  geolocation,
-  tags,
-  capture_date,
-  capture_by,
-  id
-) VALUES (
-  '${filename}',
-  '${payload.geolocation}',
-  '${payload.tags}',
-  '${payload.capture_date}',
-  '${payload.capture_by}',
-  '${payload.id}'
-)`;
-console.query(sql, (err, rows) => {
-  if (err) throw err;
-  let resp = {
-    status: "success",
-    statusMessage: "",
-    data: rows
+module.exports = class Photo {
+  constructor(photo, geolocation, tags, captureDate, captureBy, id) {
+    this.photo = photo;
+    this.geolocation = geolocation;
+    this.tags = tags;
+    this.captureDate = captureDate;
+    this.captureBy = captureBy;
+    this.id = id;
   }
-  res.send(resp);
-});
+
+  static save(photo) {
+    return db.execute(
+      'INSERT INTO picture (picture_data, geolocation, tags, capture_date, capture_by, id) VALUES (?,?,?,?,?,?)',
+      [photo.photo, photo.geolocation, photo.tags, photo.captureDate, photo.captureBy, photo.id]
+    );
+  }
+};
+
+// app.post('/upload', upload.single('photo'), (req, res) => {
+//   if(req.fileTypeValidationError) {
+//     let resp = {
+//       status: "fail",
+//       statusMessage: req.fileTypeValidationError,
+//       data: []
+//     }
+//   res.send({resp});
+//   return false;
+// }
+
+// const payload = req.body;
+// const filename = req.file.filename;
+
+// const sql = `
+// INSERT INTO pictures (
+//   picture_data,
+//   geolocation,
+//   tags,
+//   capture_date,
+//   capture_by,
+//   id
+// ) VALUES (
+//   '${filename}',
+//   '${payload.geolocation}',
+//   '${payload.tags}',
+//   '${payload.capture_date}',
+//   '${payload.capture_by}',
+//   '${payload.id}'
+// )`;
+// console.query(sql, (err, rows) => {
+//   if (err) throw err;
+//   let resp = {
+//     status: "success",
+//     statusMessage: "",
+//     data: rows
+//   }
+//   res.send(resp);
+// });
 
 
-})
+// })

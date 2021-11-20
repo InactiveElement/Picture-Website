@@ -41,7 +41,9 @@ export class UploadComponent implements OnInit {
     }
     if (this.uploadForm.get('photo').invalid) {
       this.isPhotoError = true;
+      console.log(0);
     }
+    console.log(this.uploadForm.get('photo').value); 
     this.uploadError = '';
     const formData = new FormData();
     console.log(1);
@@ -53,7 +55,7 @@ export class UploadComponent implements OnInit {
     const userId = localStorage.getItem("userId");
     formData.append('id', userId);
     console.log(2);
-    this.http.post('http://localhost:3000/upload', formData).subscribe(resp => {
+    this.http.post('http://localhost:3000/auth/upload', formData).subscribe(resp => {
       if(resp['status'] == 'success') {
         alert('File saved in file-upload-server/uploads');
         console.log(3);
