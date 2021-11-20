@@ -25,6 +25,7 @@ export class UploadComponent implements OnInit {
     this.newForm();
   }
 
+
   newForm() {
     this.uploadForm = this.fb.group({
       photo         : ['', Validators.compose([Validators.required])],
@@ -78,5 +79,4 @@ export class UploadComponent implements OnInit {
     this.uploadForm.patchValue({ photo: file });
     this.uploadForm.get('photo').updateValueAndValidity();
   }
-
 }
