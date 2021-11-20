@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
@@ -14,6 +14,7 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { UploadComponent } from './user-home/upload/upload.component';
 import { SharedPicsComponent } from './user-home/shared-pics/shared-pics.component';
 import { MyPicsComponent } from './user-home/my-pics/my-pics.component';
+import { FileUploaderComponent } from './user-home/file-uploader/file-uploader.component';
 
 @NgModule({
   declarations: [
@@ -24,14 +25,16 @@ import { MyPicsComponent } from './user-home/my-pics/my-pics.component';
     UserHomeComponent,
     UploadComponent,
     SharedPicsComponent,
-    MyPicsComponent
+    MyPicsComponent,
+    FileUploaderComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     {
