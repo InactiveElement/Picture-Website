@@ -16,17 +16,5 @@ export class UploadComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  upload() {
-
-  }
-
-  onFileChanged() {
-
-  }
-
-  onUpload() {
-    
-  }
-
 
 }
