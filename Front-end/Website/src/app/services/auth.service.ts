@@ -34,11 +34,11 @@ export class AuthService {
         first(),
         tap((tokenObject: any) => {
           this.userId = tokenObject.userId;
-          localStorage.setItem("token", tokenObject.token);
-          localStorage.setItem("userId", tokenObject.userId);
-          localStorage.setItem("username", tokenObject.username);
-          this.isUserLoggedIn$.next(true);
-          this.router.navigate(["home"]);
+          // localStorage.setItem("token", tokenObject.token);
+          // localStorage.setItem("userId", tokenObject.userId);
+          // localStorage.setItem("username", tokenObject.username);
+          // this.isUserLoggedIn$.next(true);
+          // this.router.navigate(["home"]);
         }),
         catchError(
           this.errorHandlerService.handleError<any>("signup")
