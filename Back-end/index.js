@@ -14,7 +14,13 @@ const app = express();
 
 const ports = process.env.PORT || 3000;
 
+// var directory = require('serve-index');
+// app.use(directory('/uploads'));
+
 app.use(bodyParser.json());
+
+
+app.use(express.static('/uploads'));
 
 app.use(cors());
 

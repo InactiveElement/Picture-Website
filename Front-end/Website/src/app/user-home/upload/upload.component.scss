@@ -2,3 +2,16 @@
     background-color: #4488c7; 
     color: azure;
 }
+
+.btn-primary:hover {
+    cursor: pointer;
+    box-shadow: 0 1px 2px 0 rgba(46, 132, 202, 1), 0 1px 5px 0 rgba(46, 132, 202, 1);
+    transform: translateY(-0.1rem);
+    transition: transform 150ms;
+}
+
+.btn-primary[disabled]:hover {
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}

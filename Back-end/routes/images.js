@@ -40,4 +40,10 @@ const storage = multer.diskStorage({
 
 router.post('/upload', upload, imageController.upload);
 
+router.post('/display', imageController.display);
+
+router.post('/delete', imageController.delete);
+
+
+
 module.exports = router;

@@ -1,11 +1,5 @@
 const db = require('../util/database');
 
-// const wrappingFunction = async () => {
-//     const connection = await db.getConnection();
-//     console.log(connection);
-// };
-// wrappingFunction();
-
 module.exports = class User {
     constructor(username, email, password) {
         

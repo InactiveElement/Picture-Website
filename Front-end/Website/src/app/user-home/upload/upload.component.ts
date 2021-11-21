@@ -3,6 +3,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ImageService } from 'src/app/services/image.service';
+import { UserHomeComponent } from '../user-home.component';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class UploadComponent implements OnInit {
   uploadError: string = "";
 
 
-  constructor(private fb: FormBuilder, private router: Router, private http: HttpClient, private imageService: ImageService) { }
+  constructor(private fb: FormBuilder, private router: Router, private http: HttpClient, private imageService: ImageService, private userhome: UserHomeComponent) { }
 
   ngOnInit(): void {
     this.newForm();
@@ -54,25 +55,13 @@ export class UploadComponent implements OnInit {
     formData.append('captureBy', this.uploadForm.controls['captureBy'].value);
     const userId = localStorage.getItem("userId");
     formData.append('id', userId);
-    console.log(formData)
-    console.log(this.uploadForm) 
 
     await this.imageService.upload(formData).subscribe(
       message => {
         console.log(message)
+        this.userhome.myPics();
       }
     );
-
-    // this.http.post('http://localhost:3000/image/upload', formData).subscribe(resp => {
-      
-    //   if(resp['status'] == 'success') {
-    //     alert('File saved in file-upload-server/uploads');
-    //   }
-    // }, (resp)=> {
-    //   this.uploadError = 'Some error occured please try later';
-    //   console.log(resp);
-    // });
-
   }
 
   onFileSelect(file) {

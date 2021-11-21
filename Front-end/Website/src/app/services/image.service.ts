@@ -37,12 +37,27 @@ export class ImageService {
         );
   }
 
-  download(uploadData): Observable<any> {
-    return this.http.post(`${this.url}/upload`, uploadData)
+  delete(photoID): Observable<any> {
+    console.log(photoID)
+    return this.http.post(`${this.url}/delete`, photoID)
+        .pipe(first(),
+            catchError(
+                this.errorHandlerService.handleError<any>("upload")
+            )
+        );
+  }
+
+  display(id): Observable<any> {
+    return this.http.post(`${this.url}/display`, id)
         .pipe(
             first(),
-            tap((fileName: any) => {
-                localStorage.setItem("fileName", fileName);
+            tap((displayed: any) => {
+                localStorage.setItem("photoID", displayed.photoId)
+                localStorage.setItem("photo", displayed.photo);
+                localStorage.setItem("geolocation", displayed.geolocation);
+                localStorage.setItem("tags", displayed.tags);
+                localStorage.setItem("capturedDate", displayed.capturedDate);
+                localStorage.setItem("capturedBy", displayed.capturedBy);
             }),
             catchError(
                 this.errorHandlerService.handleError<any>("upload")
