@@ -15,6 +15,7 @@ import { UploadComponent } from './user-home/upload/upload.component';
 import { SharedPicsComponent } from './user-home/shared-pics/shared-pics.component';
 import { MyPicsComponent } from './user-home/my-pics/my-pics.component';
 import { FileUploaderComponent } from './user-home/file-uploader/file-uploader.component';
+import { UpdateComponent } from './user-home/update/update.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FileUploaderComponent } from './user-home/file-uploader/file-uploader.c
     UploadComponent,
     SharedPicsComponent,
     MyPicsComponent,
-    FileUploaderComponent
+    FileUploaderComponent,
+    UpdateComponent
     
   ],
   imports: [

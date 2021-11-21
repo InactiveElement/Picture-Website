@@ -8,15 +8,26 @@ module.exports = class Image {
 
   static display(id) {
     return db.execute(
-      `
-      SELECT * FROM pictures WHERE id = '${id}'
-      `
+      `SELECT * FROM pictures WHERE id = '${id}'`
     );
   }
 
   static delete(photoID) {
     return db.execute(
       `DELETE FROM pictures WHERE picture_id = '${photoID}'`
+    );
+  }
+
+  static update(newData) {
+    return db.execute(
+      `
+      UPDATE pictures SET
+      geolocation = '${newData.geolocation}',
+      tags = '${newData.tags}',
+      capture_date = '${newData.captureDate}',
+      capture_by = '${newData.captureBy}'
+      WHERE picture_id = '${newData.photoID}'
+      `
     );
   }
 

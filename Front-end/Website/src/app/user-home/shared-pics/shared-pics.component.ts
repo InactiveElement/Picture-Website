@@ -15,8 +15,4 @@ export class SharedPicsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  upload() {
-
-  }
-
 }

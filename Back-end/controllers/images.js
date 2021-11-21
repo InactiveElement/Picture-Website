@@ -61,8 +61,22 @@ exports.display = async (req, res, next) => {
   }
  } 
 
+ exports.update = async (req, res, next) => {
+    const newData = req.body;
+  try {
+    const updating = await Image.update(newData)
+    const storedValues = updating[0][0];
+
+    res.status(200).json({message: "Updated"})
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+ }
+
  exports.delete = async (req, res, next) => {
-  console.log(req.body.photoID);
   const photoID = req.body.photoID;
   try {
     const deleting = await Image.delete(photoID)

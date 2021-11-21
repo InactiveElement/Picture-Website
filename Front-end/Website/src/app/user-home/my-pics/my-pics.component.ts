@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { first } from 'rxjs';
 import { ImageService } from 'src/app/services/image.service';
+import { UserHomeComponent } from '../user-home.component';
 
 
 
@@ -35,7 +36,7 @@ export class MyPicsComponent implements OnInit {
     return localStorage.getItem("photoID");
   }
 
-  constructor(private router: Router, private imageService: ImageService, private sanitizer: DomSanitizer) { }
+  constructor(private router: Router, private imageService: ImageService, private sanitizer: DomSanitizer, private userHome: UserHomeComponent) { }
 
   ngOnInit(): void {
     this.myPicsForm = this.createFormGroup();
@@ -75,6 +76,10 @@ export class MyPicsComponent implements OnInit {
         this.image = null;
       }
     )
+  }
+
+  updateForm() {
+    this.userHome.updatePic();
   }
 
 }

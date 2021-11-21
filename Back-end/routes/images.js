@@ -44,6 +44,8 @@ router.post('/display', imageController.display);
 
 router.post('/delete', imageController.delete);
 
+router.post('/update', imageController.update);
+
 
 
 module.exports = router;

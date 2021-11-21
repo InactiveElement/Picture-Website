@@ -64,4 +64,14 @@ export class ImageService {
             )
         );
   }
+
+  update(newData): Observable<any> {
+    return this.http.post(`${this.url}/update`, newData)
+        .pipe(
+            first(),
+            catchError(
+                this.errorHandlerService.handleError<any>("upload")
+            )
+        );
+  }
 }
