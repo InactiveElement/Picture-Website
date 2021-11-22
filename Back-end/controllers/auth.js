@@ -40,6 +40,8 @@ exports.signup = async (req, res, next) => {
     }
     const result = await User.save(userDetails);
 
+    res.status(203).json({message: "Success"});
+
     
   } catch (err) {
     if (!err.statusCode) {

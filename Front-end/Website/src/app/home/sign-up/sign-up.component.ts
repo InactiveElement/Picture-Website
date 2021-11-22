@@ -37,10 +37,13 @@ export class SignUpComponent implements OnInit {
   signup(): void {
     this.authService.signup(this.signUpForm.value).pipe(first()).subscribe(
       message => {
-        this.message = message.message;
-        this.authService.login(this.signUpForm.value.email, this.signUpForm.value.password).pipe(first()).subscribe( msg => {
+        if (message.message == "Success") {
+          this.authService.login(this.signUpForm.value.email, this.signUpForm.value.password).pipe(first()).subscribe( msg => {
+            this.message = message.message;
+          });
+        } else {
           this.message = message.message;
-        });
+        }
       }
     )
   }
