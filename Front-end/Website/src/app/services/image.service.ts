@@ -70,7 +70,12 @@ export class ImageService {
         .pipe(
             first(),
             tap((displayed: any) => {
-                localStorage.setItem("sharedPhoto", displayed.sharedPhoto)
+                localStorage.setItem("sharedPhoto", displayed.sharedPhoto);
+                localStorage.setItem("sharedGeolocation", displayed.sharedGeolocation);
+                localStorage.setItem("sharedTags", displayed.sharedTags);
+                localStorage.setItem("sharedCaptured_date", displayed.sharedCaptured_date);
+                localStorage.setItem("sharedCaptured_by", displayed.sharedCaptured_by);
+                localStorage.setItem("sharedPicture_user", displayed.sharedPicture_user);
             }),
             catchError(
                 this.errorHandlerService.handleError<any>("upload")

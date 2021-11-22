@@ -26,7 +26,12 @@ export class ShareComponent implements OnInit {
   newForm() {
     return new FormGroup({
       photo: new FormControl(localStorage.getItem("photo"), [Validators.required]),
-      username: new FormControl("", [Validators.required, Validators.minLength(2)])
+      username: new FormControl("", [Validators.required, Validators.minLength(2)]),
+      geolocation: new FormControl(localStorage.getItem("geolocation"), [Validators.required]),
+      tags: new FormControl(localStorage.getItem("tags"), [Validators.required]),
+      captured_date: new FormControl(localStorage.getItem("capturedDate"), [Validators.required]),
+      captured_by: new FormControl(localStorage.getItem("capturedBy"), [Validators.required]),
+      picture_user: new FormControl(localStorage.getItem("username"), [Validators.required]),
     })
   }
 

@@ -13,16 +13,12 @@ export class SharedPicsComponent implements OnInit {
 
   sharedPicsForm: FormGroup;
   public sharedPhoto: string = '';
-  // public geolocation: string = '';
-  // public tags: string = '';
-  // public captureDate: string = '';
-  // public captureBy: string = '';
-
-  // get imageLink() {
-  //   return this.sanitizer.bypassSecurityTrustUrl(localStorage.getItem("sharedPhoto"));
-  // }
+  public geolocation: string = '';
+  public tags: string = '';
+  public captureDate: string = '';
+  public captureBy: string = '';
+  public pictureUser: string = '';
   
-
   constructor(private imageService: ImageService) { }
 
   ngOnInit(): void {
@@ -41,6 +37,11 @@ export class SharedPicsComponent implements OnInit {
     this.imageService.showShared({"currentUser": this.sharedPicsForm.value.username}).pipe(first()).subscribe(
       message => {
         this.sharedPhoto = localStorage.getItem("sharedPhoto");
+        this.geolocation = localStorage.getItem("sharedGeolocation");
+        this.tags = localStorage.getItem("sharedTags");
+        this.captureDate = localStorage.getItem("sharedCaptured_date");
+        this.captureBy = localStorage.getItem("sharedCaptured_by");
+        this.pictureUser = localStorage.getItem("sharedPicture_user");
       }
     )
   }

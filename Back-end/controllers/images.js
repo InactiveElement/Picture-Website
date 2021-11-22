@@ -112,6 +112,11 @@ exports.display = async (req, res, next) => {
      }
      res.status(202).json({ 
       sharedPhoto: userReturn[0][0].picture_data,
+      sharedGeolocation: userReturn[0][0].geolocation,
+      sharedTags: userReturn[0][0].tags,
+      sharedCaptured_date: userReturn[0][0].captured_date,
+      sharedCaptured_by: userReturn[0][0].captured_by,
+      sharedPicture_user: userReturn[0][0].picture_user,
       });
 
    } catch (err) {

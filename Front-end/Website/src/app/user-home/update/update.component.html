@@ -2,20 +2,20 @@
     <div class="card" style="color: #5b9be6; background-color: #cbe7ff; padding: 0;">
         <div class="card-body" style="text-align: left;">
             <form [formGroup]="updatePicForm" (ngSubmit)="update()" >
-                <div class="form-group" style="padding-bottom: 0.3rem; padding-top: 0.3rem;">
-                    <p>Geolocation:</p>
+                <div class="form-group" style="padding-bottom: 0.3rem; padding-top: 0.3rem; color: #4488c7;">
+                    <h4>Geolocation:</h4>
                     <input type="text" formControlName="geolocation" class="form-control" require>
                 </div>
-                <div class="form-group" style="padding-bottom: 0.3rem;">
-                    <p>Tags:</p>
+                <div class="form-group" style="padding-bottom: 0.3rem; color: #4488c7;">
+                    <h4>Tags:</h4>
                     <input type="text" formControlName="tags" class="form-control" required/>
                 </div>
-                <div class="form-group" style="padding-bottom: 0.3rem;">
-                    <p>Captured Date:</p>
+                <div class="form-group" style="padding-bottom: 0.3rem; color: #4488c7;">
+                    <h4>Captured Date:</h4>
                     <input type="text" formControlName="captureDate" class="form-control" required/>
                 </div>
-                <div class="form-group" style="padding-bottom: 0.3rem;">
-                    <p>Captured By:</p>
+                <div class="form-group" style="padding-bottom: 0.3rem; color: #4488c7;">
+                    <h4>Captured By:</h4>
                     <input type="text" formControlName="captureBy" class="form-control" required/>
                 </div>
                 <button type="submit" [disabled]="!updatePicForm.valid" class="btn btn-primary" style="border: 0.1rem solid rgb(242, 250, 255); position: absolute; bottom: 15px;">

@@ -20,7 +20,16 @@ module.exports = class Image {
 
   static share(shareDetails) {
     return db.execute(
-      `INSERT INTO shared_pictures (picture_data, username) VALUES ('${shareDetails.photo}','${shareDetails.username}')`
+      `INSERT INTO shared_pictures (picture_data, username, geolocation, tags, captured_date, captured_by, picture_user) 
+      VALUES (
+        '${shareDetails.photo}',
+        '${shareDetails.username}',
+        '${shareDetails.geolocation}',
+        '${shareDetails.tags}',
+        '${shareDetails.captured_date}',
+        '${shareDetails.captured_by}',
+        '${shareDetails.picture_user}'
+        )`
     );
   }
 
