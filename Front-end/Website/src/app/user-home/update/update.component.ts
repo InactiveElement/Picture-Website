@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { first } from 'rxjs';
 import { ImageService } from 'src/app/services/image.service';
+import { MyPicsComponent } from '../my-pics/my-pics.component';
 import { UserHomeComponent } from '../user-home.component';
 
 @Component({
@@ -28,19 +29,19 @@ export class UpdateComponent implements OnInit {
 
   newForm(): FormGroup {
     return new FormGroup({
-      geolocation: new FormControl("", [Validators.required]),
-      tags: new FormControl("", [Validators.required]),
-      captureDate: new FormControl("", [Validators.required]),
-      captureBy: new FormControl("", [Validators.required]),
+      geolocation: new FormControl(this.geolocation, [Validators.required, Validators.minLength(2)]),
+      tags: new FormControl(this.tags, [Validators.required, Validators.minLength(2)]),
+      captureDate: new FormControl(this.captureDate, [Validators.required, Validators.minLength(2)]),
+      captureBy: new FormControl(this.captureBy, [Validators.required, Validators.minLength(2)]),
       photoID: new FormControl(localStorage.getItem("photoID"))
     })
   }
-
+  
   update(): void {
     this.imageService.update(this.updatePicForm.value).pipe(first()).subscribe(
       message => {
         this.message = message.message;
-        this.userhome.myPics();
+        this.userhome.myPics()
       }
     )
   }

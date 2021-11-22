@@ -20,15 +20,21 @@
                 <a [href]="image" download="myPicture.png" class="btn btn-primary" style="border: 0.1rem solid rgb(242, 250, 255); position: absolute; bottom: 15px;">
                     Download
                 </a>
-                <button (click)="updateForm()" class="btn btn-primary" style="border: 0.1rem solid rgb(242, 250, 255); position: absolute; bottom: 15px; margin-left: 6.5rem">
+                <button (click)="updateForm()" class="btn btn-primary" style="border: 0.1rem solid rgb(242, 250, 255); position: absolute; bottom: 15px; margin-left: 6.5rem;">
                     Update
                 </button>
-                <button (click)="deletePic()" class="btn btn-primary" style="border: 0.1rem solid rgb(242, 250, 255); position: absolute; bottom: 15px; margin-left: 11.8rem;">
+                <button (click)="shareForm()" class="btn btn-primary" style="border: 0.1rem solid rgb(242, 250, 255); position: absolute; bottom: 15px; margin-left: 11.8rem;">
+                    Share
+                </button>
+                <button (click)="deletePic()" class="btn btn-primary" style="border: 0.1rem solid rgb(242, 250, 255); position: absolute; bottom: 15px; right: 15px;">
                     Delete
                 </button>
             </form>
-            <div *ngIf="!image"  style="color: #4488c7;">
-                No pictures uploaded.
+            <div *ngIf="deleted" class="alert alert-info alert-dismissible fade show">
+                Picture deleted.
+            </div>
+            <div *ngIf="!image" class="alert alert-info alert-dismissible fade show">
+                You have no uploaded pictures. Click <strong><a (click)="uploadForm()" style="cursor: pointer;" >here</a></strong> to upload.
             </div>
         </div>
     </div>

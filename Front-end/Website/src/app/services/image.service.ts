@@ -36,9 +36,9 @@ export class ImageService {
             )
         );
   }
+  
 
   delete(photoID): Observable<any> {
-    console.log(photoID)
     return this.http.post(`${this.url}/delete`, photoID)
         .pipe(first(),
             catchError(
@@ -65,10 +65,33 @@ export class ImageService {
         );
   }
 
+  showShared(currentUser): Observable<any> {
+    return this.http.post(`${this.url}/showShared`, currentUser)
+        .pipe(
+            first(),
+            tap((displayed: any) => {
+                localStorage.setItem("sharedPhoto", displayed.sharedPhoto)
+            }),
+            catchError(
+                this.errorHandlerService.handleError<any>("upload")
+            )
+        );
+  }
+
   update(newData): Observable<any> {
     return this.http.post(`${this.url}/update`, newData)
         .pipe(
             first(),
+            catchError(
+                this.errorHandlerService.handleError<any>("upload")
+            )
+        );
+  }
+
+  share(shareDetails): Observable<any> {
+    console.log(shareDetails)
+    return this.http.post(`${this.url}/share`, shareDetails)
+    .pipe(first(),
             catchError(
                 this.errorHandlerService.handleError<any>("upload")
             )

@@ -65,4 +65,13 @@ export class AuthService {
         )
       );
   }
+
+  checkUser(username): Observable<any> {
+    return this.http.post(`${this.url}/checkUser`, username)
+      .pipe(first(),
+        catchError(
+          this.errorHandlerService.handleError<any>("login")
+        )
+      );
+  }
 }

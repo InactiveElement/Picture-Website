@@ -18,6 +18,7 @@ export class UploadComponent implements OnInit {
   image: string;
   submitted: boolean = false;
   uploadError: string = "";
+  message: any;
 
 
   constructor(private fb: FormBuilder, private router: Router, private http: HttpClient, private imageService: ImageService, private userhome: UserHomeComponent) { }
@@ -30,10 +31,10 @@ export class UploadComponent implements OnInit {
   newForm() {
     this.uploadForm = this.fb.group({
       photo         : ['', Validators.compose([Validators.required])],
-      geolocation:    ['', Validators.compose([Validators.required])],
-      tags:           ['', Validators.compose([Validators.required])],
-      captureDate:   ['', Validators.compose([Validators.required])],
-      captureBy:     ['', Validators.compose([Validators.required])],
+      geolocation:    ['', Validators.compose([Validators.required, Validators.minLength(2)])],
+      tags:           ['', Validators.compose([Validators.required, Validators.minLength(2)])],
+      captureDate:   ['', Validators.compose([Validators.required, Validators.minLength(2)])],
+      captureBy:     ['', Validators.compose([Validators.required, Validators.minLength(2)])],
       id:             [localStorage.getItem("userId")]
     })
   }
@@ -58,8 +59,14 @@ export class UploadComponent implements OnInit {
 
     await this.imageService.upload(formData).subscribe(
       message => {
-        console.log(message)
-        this.userhome.myPics();
+        if (message.message == "Success")
+        {
+          setTimeout(() => {
+            this.userhome.myPics();
+          },500);
+        } else {
+          this.message = message.message;
+        }
       }
     );
   }
@@ -68,4 +75,11 @@ export class UploadComponent implements OnInit {
     this.uploadForm.patchValue({ photo: file });
     this.uploadForm.get('photo').updateValueAndValidity();
   }
+
+  valueChange() {
+    this.message = null;
+  }
+
+
 }
+

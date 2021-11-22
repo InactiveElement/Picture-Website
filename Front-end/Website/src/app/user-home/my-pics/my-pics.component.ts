@@ -22,7 +22,8 @@ export class MyPicsComponent implements OnInit {
   public captureDate: string = '';
   public captureBy: string = '';
   message: any;
-  imageFile: any
+  imageFile: any;
+  deleted: boolean = false;;
 
   get userId() {
     return localStorage.getItem("userId");
@@ -59,6 +60,7 @@ export class MyPicsComponent implements OnInit {
         this.tags = localStorage.getItem("tags");
         this.captureDate = localStorage.getItem("capturedDate");
         this.captureBy = localStorage.getItem("capturedBy");
+        this.deleted = false;
       }
     )
   }
@@ -74,6 +76,7 @@ export class MyPicsComponent implements OnInit {
         localStorage.removeItem("capturedBy");
         localStorage.removeItem("photoID");
         this.image = null;
+        this.deleted = true;
       }
     )
   }
@@ -81,5 +84,14 @@ export class MyPicsComponent implements OnInit {
   updateForm() {
     this.userHome.updatePic();
   }
+
+  uploadForm() {
+    this.userHome.uploadPic();
+  }
+
+  shareForm() {
+    this.userHome.sharePic();
+  }
+
 
 }

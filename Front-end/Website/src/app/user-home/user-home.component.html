@@ -3,12 +3,12 @@
 <nav *ngIf="isAuthenticated" class='navbar navbar-expand navbar-dark' style = 'background-color: #4488c7; margin-left: 5rem; margin-right: 5rem;'> 
         <ul class='navbar-nav mr-auto ml-auto'>
             <div>
-                <li class='nav-item'><a id="sharedPictures" (click)="sharedPics()" class='nav-link' style="color: azure; text-shadow: 0 1px 2px 0 rgba(198, 202, 206, 1), 0 1px 5px 0 rgba(198, 202, 206, 1); transform: translateY(-0.1rem); transition: transform 150ms;"
+                <li class='nav-item'><a id="sharedPictures" (click)="sharedPics()" class='nav-link'
                     >Shared Pictures</a>
                 </li>
             </div>
             <div>
-                <li class='nav-item'><a id="myPictures" (click)="myPics()" class='nav-link'
+                <li class='nav-item'><a id="myPictures" (click)="myPics()" class='nav-link' style="color: azure; text-shadow: 0 1px 2px 0 rgba(198, 202, 206, 1), 0 1px 5px 0 rgba(198, 202, 206, 1); transform: translateY(-0.1rem); transition: transform 150ms;"
                     >My Pictures</a>
                 </li>
             </div>
@@ -18,8 +18,13 @@
                 </li>
             </div>
             <div *ngIf="updatePicForm">
-                <li class='nav-item'><a id="updatePicture" class='nav-link'
+                <li class='nav-item'><a id="updatePicture" class='nav-link' style="color: azure; text-shadow: 0 1px 2px 0 rgba(198, 202, 206, 1), 0 1px 5px 0 rgba(198, 202, 206, 1); transform: translateY(-0.1rem); transition: transform 150ms;"
                     >Update Picture</a>
+                </li>
+            </div>
+            <div *ngIf="sharePicForm">
+                <li class='nav-item'><a id="sharePicture" class='nav-link' style="color: azure; text-shadow: 0 1px 2px 0 rgba(198, 202, 206, 1), 0 1px 5px 0 rgba(198, 202, 206, 1); transform: translateY(-0.1rem); transition: transform 150ms;"
+                    >Share Picture</a>
                 </li>
             </div>
         </ul>
@@ -37,6 +42,9 @@
 </div>
 <div *ngIf="updatePicForm" class="row" style="justify-content: center;" >
     <app-update></app-update>
+</div>
+<div *ngIf="sharePicForm" class="row" style="justify-content: center;" >
+    <app-share></app-share>
 </div>
 
 

@@ -12,9 +12,10 @@ export class UserHomeComponent implements OnInit {
 
   isAuthenticated = false;
   upload: Boolean = false;
-  myPicsForm: Boolean = false;
-  sharedPicsForm: Boolean = true;
+  myPicsForm: Boolean = true;
+  sharedPicsForm: Boolean = false;
   updatePicForm: Boolean = false;
+  sharePicForm: Boolean = false;
 
   constructor(private authService: AuthService) { }
 
@@ -22,6 +23,7 @@ export class UserHomeComponent implements OnInit {
     this.authService.isUserLoggedIn$.subscribe((isLoggedin) => {
     this.isAuthenticated = isLoggedin;
     })
+    this.myPics();
   }
 
   sharedPics() {
@@ -32,6 +34,7 @@ export class UserHomeComponent implements OnInit {
     this.sharedPicsForm = true;
     this.myPicsForm = false;
     this.updatePicForm = false;
+    this.sharePicForm = false;
   }
 
   myPics() {
@@ -42,6 +45,7 @@ export class UserHomeComponent implements OnInit {
     this.sharedPicsForm = false;
     this.myPicsForm = true;
     this.updatePicForm = false;
+    this.sharePicForm = false;
   }
 
 
@@ -53,6 +57,7 @@ export class UserHomeComponent implements OnInit {
     this.sharedPicsForm = false;
     this.myPicsForm = false;
     this.updatePicForm = false;
+    this.sharePicForm = false;
   } 
 
   updatePic() {
@@ -60,10 +65,22 @@ export class UserHomeComponent implements OnInit {
     this.upload = false;
     this.sharedPicsForm = false;
     this.myPicsForm = false;
+    this.sharePicForm = false;
     document.getElementById('sharedPictures')?.setAttribute("style", "color: #cdd3da; text-shadow: none; transform: none;")
     document.getElementById('myPictures')?.setAttribute("style", "color: #cdd3da; text-shadow: none; transform: none;")
     document.getElementById('uploadPicture')?.setAttribute("style", "color: #cdd3da; text-shadow: none; transform: none;")
     document.getElementById('updatePicture')?.setAttribute("style", "color: azure; text-shadow: 0 1px 2px 0 rgba(198, 202, 206, 1), 0 1px 5px 0 rgba(198, 202, 206, 1); transform: translateY(-0.1rem); transition: transform 150ms;")
+  }
+
+  sharePic() {
+    this.sharePicForm = true;
+    this.updatePicForm = false;
+    this.upload = false;
+    this.sharedPicsForm = false;
+    this.myPicsForm = false;
+    document.getElementById('sharedPictures')?.setAttribute("style", "color: #cdd3da; text-shadow: none; transform: none;")
+    document.getElementById('myPictures')?.setAttribute("style", "color: #cdd3da; text-shadow: none; transform: none;")
+    document.getElementById('uploadPicture')?.setAttribute("style", "color: #cdd3da; text-shadow: none; transform: none;")
   }
 
 }

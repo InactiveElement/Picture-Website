@@ -40,7 +40,7 @@ exports.signup = async (req, res, next) => {
     }
     const result = await User.save(userDetails);
 
-    res.status(201).json({ output: 'User registered!' });
+    
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;
@@ -48,6 +48,26 @@ exports.signup = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.checkUser = async (req, res, next) => {
+  try {
+    const username = req.body.username;
+    const userU = await User.findU(username)
+    if(userU[0].length > 0) {
+      res.status(201).json({ message: "Success" });
+    } else {
+      const error = new Error("Username does not exist.")
+      error.statusCode = 412;
+      res.status(412).json({ message: error.message });
+      throw error;
+    }
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+}
 
 exports.login = async (req, res, next) => {
   const email = req.body.email;

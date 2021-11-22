@@ -18,6 +18,18 @@ module.exports = class Image {
     );
   }
 
+  static share(shareDetails) {
+    return db.execute(
+      `INSERT INTO shared_pictures (picture_data, username) VALUES ('${shareDetails.photo}','${shareDetails.username}')`
+    );
+  }
+
+  static showShared(currentUser) {
+    return db.execute(
+      `SELECT * FROM shared_pictures WHERE username = '${currentUser}'`
+    );
+  }
+
   static update(newData) {
     return db.execute(
       `

@@ -6,27 +6,28 @@
                     <!-- <div class="card" style="width: 25rem; height: 25rem;"></div>
                     <div style="padding-bottom: 0.5rem;"></div> -->
                     
-                    <input type="text" class="form-control" hidden formControlName="photo">
+                    <input type="text" class="form-control" hidden formControlName="photo" (keyup)="valueChange()"> 
                     <file-uploader (onFileSelect)="onFileSelect($event)" ></file-uploader>
 
                     
                     <div class="form-group" style="padding-bottom: 0.3rem; padding-top: 0.3rem;">
-                        <input type="text" formControlName="geolocation" class="form-control" required 
+                        <input type="text" formControlName="geolocation" class="form-control" required (keyup)="valueChange()"
                         placeholder="Geolocation"/>
                     </div>
                     <div class="form-group" style="padding-bottom: 0.3rem;">
-                        <input type="text" formControlName="tags" class="form-control" required 
+                        <input type="text" formControlName="tags" class="form-control" required (keyup)="valueChange()"
                         placeholder="Tags"/>
                     </div>
                     <div class="form-group" style="padding-bottom: 0.3rem;">
-                        <input type="text" formControlName="captureDate" class="form-control" required 
+                        <input type="text" formControlName="captureDate" class="form-control" required (keyup)="valueChange()"
                         placeholder="Captured date (dd/mm/yyyy)"/>
                     </div>
                     <div class="form-group" style="padding-bottom: 11rem;">
-                        <input type="text" formControlName="captureBy" class="form-control" required 
+                        <input type="text" formControlName="captureBy" class="form-control" required (keyup)="valueChange()"
                         placeholder="Captured by"/>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="border: 0.1rem solid rgb(242, 250, 255); position: absolute; bottom: 15px;">
+                    <div *ngIf="message" style="bottom: 2rem;" class="alert alert-danger">{{message}}</div>
+                    <button [disabled]="!uploadForm.valid" type="submit" class="btn btn-primary" style="border: 0.1rem solid rgb(242, 250, 255); position: absolute; bottom: 15px;">
                         Upload
                     </button>
                     <!-- <button (click)="clear()" class="btn btn-primary" style="border: 0.1rem solid rgb(242, 250, 255); position: absolute; bottom: 15px; left: 100px;">
